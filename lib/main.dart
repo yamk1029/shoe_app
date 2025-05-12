@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_app/login.dart';
+import 'package:shoe_app/loginsignup/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: const Login(),
