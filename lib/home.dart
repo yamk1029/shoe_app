@@ -6,115 +6,160 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            colors: [
-              Colors.blueAccent.shade400,
-              Colors.lightBlue.shade800,
-              Colors.lightBlueAccent,
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          colors: [
+            Colors.blueAccent.shade400,
+            Colors.lightBlue.shade800,
+            Colors.lightBlueAccent,
+          ],
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        drawer: Drawer(
+          child: Column(
+            children: [
+              UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.lightBlue.shade800,
+                ),
+                currentAccountPicture: const CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Icon(Icons.person, size: 40, color: Colors.black),
+                ),
+                accountName: const Text("Shikhar User"),
+                accountEmail: const Text("user@shikharshoe.com"),
+              ),
+              ListTile(
+                leading: const Icon(Icons.home),
+                title: const Text("Home"),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.category),
+                title: const Text("Categories"),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.shopping_cart),
+                title: const Text("Cart"),
+                onTap: () {},
+              ),
+              const Spacer(),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.exit_to_app),
+                title: const Text("Exit"),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
             ],
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const SizedBox(height: 50),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: FadeInDown(
-                duration: const Duration(milliseconds: 1000),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      'Welcome 👟',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    CircleAvatar(
-                      backgroundColor: Colors.white,
-                      child: Icon(Icons.person, color: Colors.black),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            FadeInDown(
-              duration: const Duration(milliseconds: 1200),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text(
-                  'Explore Our New Arrivals',
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.9),
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.all(30),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(100),
-                    bottomRight: Radius.circular(100),
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    FadeInLeft(
-                      duration: const Duration(milliseconds: 1400),
-                      child: const Text(
-                        'Categories',
+        appBar: AppBar(
+          title: const  Text(
+                        'Welcome',
                         style: TextStyle(
-                          fontSize: 20,
+                          color: Colors.white,
+                          fontSize: 26,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    Expanded(
-                      child: GridView.count(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 20,
-                        mainAxisSpacing: 20,
-                        children: const [
-                          HomeCard(
-                            title: 'Men\'s Shoes',
-                            image: 'assets/items/mens1.png',
-                          ),
-                          HomeCard(
-                            title: 'Women\'s Shoes',
-                            image: 'assets/items/womens1.png',
-                          ),
-                          HomeCard(
-                            title: 'Offers',
-                            image: 'assets/items/offer1.png',
-                          ),
-                          HomeCard(
-                            title: 'New Arrivals',
-                            image: 'assets/items/new1.png',
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        body: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Welcome Header
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: FadeInDown(
+                  duration: const Duration(milliseconds: 1000),
+                  child: Row(
+                    children: const [
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+              // Subtitle
+              FadeInDown(
+                duration: const Duration(milliseconds: 1200),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    'Explore Our New Arrivals',
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.9),
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              // Categories Section
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(30),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(100),
+                      bottomRight: Radius.circular(100),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FadeInLeft(
+                        duration: const Duration(milliseconds: 1400),
+                        child: const Text(
+                          'Categories',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Expanded(
+                        child: GridView.count(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 20,
+                          children: const [
+                            HomeCard(
+                              title: 'Men\'s Shoes',
+                              image: 'assets/items/mens1.png',
+                            ),
+                            HomeCard(
+                              title: 'Women\'s Shoes',
+                              image: 'assets/items/womens1.png',
+                            ),
+                            HomeCard(
+                              title: 'Offers',
+                              image: 'assets/items/offer1.png',
+                            ),
+                            HomeCard(
+                              title: 'New Arrivals',
+                              image: 'assets/items/new1.png',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -133,32 +178,35 @@ class HomeCard extends StatelessWidget {
       duration: const Duration(milliseconds: 1600),
       child: GestureDetector(
         onTap: () {
-          // Handle card tap
+          // TODO: Navigate to category page
         },
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.grey.shade100,
+        child: Card(
+          elevation: 5,
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.shade300,
-                blurRadius: 10,
-                offset: const Offset(0, 5),
-              ),
-            ],
           ),
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(image, height: 60),
-              const SizedBox(height: 10),
-              Text(
-                title,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ],
+          color: Colors.grey.shade100,
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 90,
+                  width: 90,
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: Image.asset(image),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
           ),
         ),
       ),
