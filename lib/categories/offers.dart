@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:shoe_app/home_card.dart';
 
-class Unisexualshoe extends StatefulWidget {
-  const Unisexualshoe({super.key});
+class Offers extends StatefulWidget {
+  const Offers({super.key});
 
   @override
-  State<Unisexualshoe> createState() => _UnisexualshoeState();
+  State<Offers> createState() => _OffersState();
 }
 
-class _UnisexualshoeState extends State<Unisexualshoe> {
-  final List<Map<String, String>> unisexualshoesItems = [
-    {'title': "Party", 'image': 'assets/items/unisexual1.png'},
-    {'title': "Sports", 'image': 'assets/items/unisexual2.png'},
-    {'title': "Formal", 'image': 'assets/items/unisexual3.png'},
-    {'title': "Casual", 'image': 'assets/items/unisexual4.png'},
+class _OffersState extends State<Offers> {
+  final List<Map<String, String>> offersItems = [
+    {'title': "Party", 'image': 'assets/items/offer1.png'},
+    {'title': "Sports", 'image': 'assets/items/offer2.png'},
+    {'title': "Formal", 'image': 'assets/items/offer3.png'},
+    {'title': "Casual", 'image': 'assets/items/offer4.png'},
   ];
 
   @override
@@ -36,7 +36,7 @@ class _UnisexualshoeState extends State<Unisexualshoe> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: const Text(
-            "Unisexual's Shoes",
+            "Offers's Shoes",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           iconTheme: const IconThemeData(color: Colors.white),
@@ -57,14 +57,14 @@ class _UnisexualshoeState extends State<Unisexualshoe> {
                 FadeInLeft(
                   duration: const Duration(milliseconds: 1200),
                   child: const Text(
-                    "Unisexual's Collection",
+                    "Offers's Collection",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
                 const SizedBox(height: 20),
                 Expanded(
                   child: GridView.builder(
-                    itemCount: unisexualshoesItems.length,
+                    itemCount: offersItems.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
@@ -72,7 +72,7 @@ class _UnisexualshoeState extends State<Unisexualshoe> {
                           mainAxisSpacing: 20,
                         ),
                     itemBuilder: (context, index) {
-                      final item = unisexualshoesItems[index];
+                      final item = offersItems[index];
                       return FadeInUp(
                         duration: Duration(milliseconds: 1300 + (index * 100)),
                         child: HomeCard(

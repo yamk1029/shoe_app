@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:shoe_app/categories/kidshoe.dart';
+import 'package:shoe_app/categories/newarrival.dart';
+import 'package:shoe_app/categories/offers.dart';
 import 'package:shoe_app/categories/unisexualshoe.dart';
 import 'package:shoe_app/categories/womenshoe.dart';
 import 'package:shoe_app/home_card.dart';
@@ -49,7 +51,7 @@ class Home extends StatelessWidget {
                 title: const Text("Categories"),
                 children: [
                   ListTile(
-                    title: const Text("Men's"),
+                    title: Center(child: const Text("Men's                   ")),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(
@@ -62,7 +64,7 @@ class Home extends StatelessWidget {
                   ),
                   const Divider(height: 1),
                   ListTile(
-                    title: const Text("Women's"),
+                    title: Center(child: const Text("Women's               ")),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(
@@ -75,7 +77,7 @@ class Home extends StatelessWidget {
                   ),
                   const Divider(height: 1),
                   ListTile(
-                    title: const Text("Kids"),
+                    title: Center(child: const Text("Kids                     ")),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(
@@ -88,7 +90,7 @@ class Home extends StatelessWidget {
                   ),
                   const Divider(height: 1),
                   ListTile(
-                    title: const Text("Unisexuals"),
+                    title: Center(child: const Text("Unisexuals          ")),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(
@@ -99,6 +101,32 @@ class Home extends StatelessWidget {
                       );
                     },
                   ),
+                  const Divider(height: 1),
+                  ListTile(
+                    title: Center(child: const Text("Offers                  ")),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Offers(),
+                        ),
+                      );
+                    },
+                  ),                  
+                  const Divider(height: 1),
+                  ListTile(
+                    title: Center(child: const Text("New Arrivals        ")),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Newarrival(),
+                        ),
+                      );
+                    },
+                  ),                  
                 ],
               ),
               const Divider(height: 1),
@@ -202,35 +230,77 @@ class Home extends StatelessWidget {
                           crossAxisSpacing: 20,
                           mainAxisSpacing: 20,
                           children: [
-                            Material(
-                              color: Colors.transparent,
-                              child: InkWell(
-                                borderRadius: BorderRadius.circular(16),
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const Menshoe(),
-                                    ),
-                                  );
-                                },
-                                child: HomeCard(
-                                  title: 'Men\'s Shoes',
-                                  image: 'assets/items/mens1.png',
-                                ),
-                              ),
+                            HomeCard(
+                              title: 'Men\'s Shoes',
+                              image: 'assets/items/mens1.png',
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const Menshoe(),
+                                  ),
+                                );
+                              },
                             ),
                             HomeCard(
                               title: 'Women\'s Shoes',
                               image: 'assets/items/womens1.png',
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const Womenshoe(),
+                                  ),
+                                );
+                              },
                             ),
+                            HomeCard(
+                              title: 'Kid\'s Shoes',
+                              image: 'assets/items/kids1.png',
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const Kidshoe(),
+                                  ),
+                                );
+                              },
+                            ),
+                            HomeCard(
+                              title: 'Unisexual\'s Shoes',
+                              image: 'assets/items/unisexual1.png',
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const Unisexualshoe(),
+                                  ),
+                                );
+                              },
+                            ),                                                        
                             HomeCard(
                               title: 'Offers',
                               image: 'assets/items/offer1.png',
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const Offers(),
+                                  ),
+                                );
+                              },
                             ),
                             HomeCard(
                               title: 'New Arrivals',
                               image: 'assets/items/new1.png',
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const Newarrival(),
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),

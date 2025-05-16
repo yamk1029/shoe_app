@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:shoe_app/home_card.dart';
 
-class Unisexualshoe extends StatefulWidget {
-  const Unisexualshoe({super.key});
+class Newarrival extends StatefulWidget {
+  const Newarrival({super.key});
 
   @override
-  State<Unisexualshoe> createState() => _UnisexualshoeState();
+  State<Newarrival> createState() => _NewarrivalState();
 }
 
-class _UnisexualshoeState extends State<Unisexualshoe> {
-  final List<Map<String, String>> unisexualshoesItems = [
-    {'title': "Party", 'image': 'assets/items/unisexual1.png'},
-    {'title': "Sports", 'image': 'assets/items/unisexual2.png'},
-    {'title': "Formal", 'image': 'assets/items/unisexual3.png'},
-    {'title': "Casual", 'image': 'assets/items/unisexual4.png'},
+class _NewarrivalState extends State<Newarrival> {
+  final List<Map<String, String>> newarrivalsItems = [
+    {'title': "Party", 'image': 'assets/items/new1.png'},
+    {'title': "Sports", 'image': 'assets/items/new2.png'},
+    {'title': "Formal", 'image': 'assets/items/new3.png'},
+    {'title': "Casual", 'image': 'assets/items/new4.png'},
   ];
 
   @override
@@ -36,7 +36,7 @@ class _UnisexualshoeState extends State<Unisexualshoe> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: const Text(
-            "Unisexual's Shoes",
+            "Newly Arrivals Shoes",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           iconTheme: const IconThemeData(color: Colors.white),
@@ -57,28 +57,27 @@ class _UnisexualshoeState extends State<Unisexualshoe> {
                 FadeInLeft(
                   duration: const Duration(milliseconds: 1200),
                   child: const Text(
-                    "Unisexual's Collection",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    "New Arrivals Collection",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
                 Expanded(
                   child: GridView.builder(
-                    itemCount: unisexualshoesItems.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 20,
-                          mainAxisSpacing: 20,
-                        ),
+                    itemCount: newarrivalsItems.length,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20,
+                    ),
                     itemBuilder: (context, index) {
-                      final item = unisexualshoesItems[index];
+                      final item = newarrivalsItems[index];
                       return FadeInUp(
                         duration: Duration(milliseconds: 1300 + (index * 100)),
-                        child: HomeCard(
-                          title: item['title']!,
-                          image: item['image']!,
-                        ),
+                        child: HomeCard(title: item['title']!, image: item['image']!)
                       );
                     },
                   ),

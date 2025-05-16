@@ -4,16 +4,22 @@ import 'package:flutter/material.dart';
 class HomeCard extends StatelessWidget {
   final String title;
   final String image;
+  final VoidCallback? onTap; // Add this line
 
-  const HomeCard({required this.title, required this.image, super.key});
+  const HomeCard({
+    required this.title,
+    required this.image,
+    this.onTap,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return FadeInUp(
       duration: const Duration(milliseconds: 1600),
-      child: GestureDetector(
-        onTap: () {
-        },
+      child: InkWell( // Use InkWell for ripple
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(20),
         child: Card(
           elevation: 5,
           shape: RoundedRectangleBorder(
