@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:shoe_app/categories/kidshoe.dart';
+import 'package:shoe_app/categories/unisexualshoe.dart';
+import 'package:shoe_app/categories/womenshoe.dart';
+import 'package:shoe_app/home_card.dart';
+import 'package:shoe_app/categories/menshoe.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -23,9 +28,7 @@ class Home extends StatelessWidget {
           child: Column(
             children: [
               UserAccountsDrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.lightBlue.shade800,
-                ),
+                decoration: BoxDecoration(color: Colors.lightBlue.shade800),
                 currentAccountPicture: const CircleAvatar(
                   backgroundColor: Colors.white,
                   child: Icon(Icons.person, size: 40, color: Colors.black),
@@ -40,16 +43,71 @@ class Home extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
-              ListTile(
+              const Divider(height: 1),
+              ExpansionTile(
                 leading: const Icon(Icons.category),
                 title: const Text("Categories"),
-                onTap: () {},
+                children: [
+                  ListTile(
+                    title: const Text("Men's"),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Menshoe(),
+                        ),
+                      );
+                    },
+                  ),
+                  const Divider(height: 1),
+                  ListTile(
+                    title: const Text("Women's"),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Womenshoe(),
+                        ),
+                      );
+                    },
+                  ),
+                  const Divider(height: 1),
+                  ListTile(
+                    title: const Text("Kids"),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Kidshoe(),
+                        ),
+                      );
+                    },
+                  ),
+                  const Divider(height: 1),
+                  ListTile(
+                    title: const Text("Unisexuals"),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Unisexualshoe(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
+              const Divider(height: 1),
               ListTile(
                 leading: const Icon(Icons.shopping_cart),
                 title: const Text("Cart"),
                 onTap: () {},
               ),
+              const Divider(height: 1),
               const Spacer(),
               const Divider(),
               ListTile(
@@ -63,16 +121,23 @@ class Home extends StatelessWidget {
           ),
         ),
         appBar: AppBar(
-          title: const  Text(
-                        'Welcome',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+          title: const Text(
+            'Welcome',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+
           backgroundColor: Colors.transparent,
           elevation: 0,
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.notifications, color: Colors.white),
+            ),
+          ],
         ),
         body: SafeArea(
           child: Column(
@@ -80,11 +145,13 @@ class Home extends StatelessWidget {
             children: [
               // Welcome Header
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
                 child: FadeInDown(
                   duration: const Duration(milliseconds: 1000),
-                  child: Row(
-                    children: const [
+                  child: Row(children: const [
                     ],
                   ),
                 ),
@@ -134,10 +201,24 @@ class Home extends StatelessWidget {
                           crossAxisCount: 2,
                           crossAxisSpacing: 20,
                           mainAxisSpacing: 20,
-                          children: const [
-                            HomeCard(
-                              title: 'Men\'s Shoes',
-                              image: 'assets/items/mens1.png',
+                          children: [
+                            Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(16),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const Menshoe(),
+                                    ),
+                                  );
+                                },
+                                child: HomeCard(
+                                  title: 'Men\'s Shoes',
+                                  image: 'assets/items/mens1.png',
+                                ),
+                              ),
                             ),
                             HomeCard(
                               title: 'Women\'s Shoes',
@@ -159,54 +240,6 @@ class Home extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class HomeCard extends StatelessWidget {
-  final String title;
-  final String image;
-
-  const HomeCard({required this.title, required this.image, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return FadeInUp(
-      duration: const Duration(milliseconds: 1600),
-      child: GestureDetector(
-        onTap: () {
-          // TODO: Navigate to category page
-        },
-        child: Card(
-          elevation: 5,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          color: Colors.grey.shade100,
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 90,
-                  width: 90,
-                  child: FittedBox(
-                    fit: BoxFit.contain,
-                    child: Image.asset(image),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
           ),
         ),
       ),
