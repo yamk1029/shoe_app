@@ -202,7 +202,7 @@ class Home extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // Categories Section
+
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.all(30),

@@ -25,7 +25,7 @@ class HomeCard extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          color: Colors.grey.shade100,
+          color: Colors.white,
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Column(

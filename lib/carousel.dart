@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:shoe_app/detail.dart';
 
 class Carousel extends StatelessWidget {
   const Carousel({super.key});
@@ -17,18 +18,21 @@ class Carousel extends StatelessWidget {
         ),
         items: [
           buildBanner(
+            context: context,
             color: Colors.pink[50]!,
-            text: 'Want to get \nbest Shoe',
+            text: 'Unbeatable Comfort,\n  Unstoppable You !',
             imagePath: 'assets/slider/slider1.png',
           ),
           buildBanner(
+            context: context,
             color: Colors.blue[100]!,
-            text: 'Upto 35% off',
+            text: '  Upto 35% off',
             imagePath: 'assets/slider/slider2.png',
           ),
           buildBanner(
+            context:context,
             color: Colors.orange[100]!,
-            text: 'Buy now, \nPay after a week',
+            text: 'Wear Smart \nWalk Smart.',
             imagePath: 'assets/slider/slider3.png',
           ),
         ],
@@ -37,6 +41,7 @@ class Carousel extends StatelessWidget {
   }
 
   Widget buildBanner({
+    required BuildContext context,
     required Color color,
     required String text,
     required String imagePath,
@@ -64,12 +69,26 @@ class Carousel extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Text(
-                  'Get Now',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                ElevatedButton(
+                  onPressed: () {
+                       Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailPage(
+                          productName: 'Smart Sneakers',
+                          productPrice: '\$89.99',
+                          imagePath: imagePath,
+                        ),
+                      ),
+                    ); 
+                  },
+                  child: Text(
+                    'Get Now',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],
