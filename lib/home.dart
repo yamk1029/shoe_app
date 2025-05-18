@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:shoe_app/carousel.dart';
 import 'package:shoe_app/categories/kidshoe.dart';
 import 'package:shoe_app/categories/newarrival.dart';
 import 'package:shoe_app/categories/offers.dart';
@@ -27,6 +28,7 @@ class Home extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         drawer: Drawer(
+         backgroundColor: Colors.white,
           child: Column(
             children: [
               UserAccountsDrawerHeader(
@@ -171,6 +173,7 @@ class Home extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Carousel(),
               // Welcome Header
               Padding(
                 padding: const EdgeInsets.symmetric(
