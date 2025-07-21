@@ -7,6 +7,30 @@ class Carousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> products = [
+      {
+        'name': 'Crocodile Shoe',
+        'price': '2500',
+        'image': 'assets/slider/slider1.png',
+        'text': 'Unbeatable Comfort,\n  Unstoppable You !',
+        'color': Colors.pink[50],
+      },
+      {
+        'name': 'Running Boot',
+        'price': '3200',
+        'image': 'assets/slider/slider2.png',
+        'text': '  Upto 35% off',
+        'color': Colors.blue[100],
+      },
+      {
+        'name': 'Classic Sneaker',
+        'price': '1800',
+        'image': 'assets/slider/slider3.png',
+        'text': 'Wear Smart \nWalk Smart.',
+        'color': Colors.orange[100],
+      },
+    ];
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: CarouselSlider(
@@ -16,26 +40,16 @@ class Carousel extends StatelessWidget {
           enlargeCenterPage: true,
           viewportFraction: 0.9,
         ),
-        items: [
-          buildBanner(
+        items: products.map((product) {
+          return buildBanner(
             context: context,
-            color: Colors.pink[50]!,
-            text: 'Unbeatable Comfort,\n  Unstoppable You !',
-            imagePath: 'assets/slider/slider1.png',
-          ),
-          buildBanner(
-            context: context,
-            color: Colors.blue[100]!,
-            text: '  Upto 35% off',
-            imagePath: 'assets/slider/slider2.png',
-          ),
-          buildBanner(
-            context:context,
-            color: Colors.orange[100]!,
-            text: 'Wear Smart \nWalk Smart.',
-            imagePath: 'assets/slider/slider3.png',
-          ),
-        ],
+            color: product['color']!,
+            text: product['text']!,
+            imagePath: product['image']!,
+            productName: product['name']!,
+            productPrice: product['price']!,
+          );
+        }).toList(),
       ),
     );
   }
@@ -45,9 +59,11 @@ class Carousel extends StatelessWidget {
     required Color color,
     required String text,
     required String imagePath,
+    required String productName,
+    required String productPrice,
   }) {
     return Container(
-      width: 300, // Adjusted width
+      width: 300,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: color,
@@ -71,18 +87,18 @@ class Carousel extends StatelessWidget {
                 const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
-                       Navigator.push(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DetailPage(
-                          productName: 'Smart Sneakers',
-                          productPrice: '\$89.99',
+                        builder: (_) => DetailPage(
+                          productName: productName,
+                          productPrice: productPrice,
                           imagePath: imagePath,
                         ),
                       ),
-                    ); 
+                    );
                   },
-                  child: Text(
+                  child: const Text(
                     'Get Now',
                     style: TextStyle(
                       color: Colors.blue,
@@ -95,7 +111,7 @@ class Carousel extends StatelessWidget {
             ),
             Image.asset(
               imagePath,
-              width: 100, // Adjust image size
+              width: 100,
               height: 100,
               fit: BoxFit.contain,
             ),

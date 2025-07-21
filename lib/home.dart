@@ -28,7 +28,7 @@ class Home extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         drawer: Drawer(
-         backgroundColor: Colors.white,
+          backgroundColor: Colors.white,
           child: Column(
             children: [
               UserAccountsDrawerHeader(
@@ -37,8 +37,8 @@ class Home extends StatelessWidget {
                   backgroundColor: Colors.white,
                   child: Icon(Icons.person, size: 40, color: Colors.black),
                 ),
-                accountName: const Text("Shikhar User"),
-                accountEmail: const Text("user@shikharshoe.com"),
+                accountName: const Text("Yam Ghimire"),
+                accountEmail: const Text("yamk1029@gmail.com"),
               ),
               ListTile(
                 leading: const Icon(Icons.home),
@@ -53,7 +53,9 @@ class Home extends StatelessWidget {
                 title: const Text("Categories"),
                 children: [
                   ListTile(
-                    title: Center(child: const Text("Men's                   ")),
+                    title: Center(
+                      child: const Text("Men's                   "),
+                    ),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(
@@ -79,7 +81,9 @@ class Home extends StatelessWidget {
                   ),
                   const Divider(height: 1),
                   ListTile(
-                    title: Center(child: const Text("Kids                     ")),
+                    title: Center(
+                      child: const Text("Kids                     "),
+                    ),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(
@@ -105,17 +109,17 @@ class Home extends StatelessWidget {
                   ),
                   const Divider(height: 1),
                   ListTile(
-                    title: Center(child: const Text("Offers                  ")),
+                    title: Center(
+                      child: const Text("Offers                  "),
+                    ),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => Offers(),
-                        ),
+                        MaterialPageRoute(builder: (context) => Offers()),
                       );
                     },
-                  ),                  
+                  ),
                   const Divider(height: 1),
                   ListTile(
                     title: Center(child: const Text("New Arrivals        ")),
@@ -128,7 +132,7 @@ class Home extends StatelessWidget {
                         ),
                       );
                     },
-                  ),                  
+                  ),
                 ],
               ),
               const Divider(height: 1),
@@ -280,7 +284,7 @@ class Home extends StatelessWidget {
                                   ),
                                 );
                               },
-                            ),                                                        
+                            ),
                             HomeCard(
                               title: 'Offers',
                               image: 'assets/items/offer1.png',
